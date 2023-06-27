@@ -1,4 +1,4 @@
-# Specify patient data dir
+# Specify patient data dir with images
 study_dir='/workspace/images/preprocessed/V002/'
 
 # Get the name of the patient subdir
