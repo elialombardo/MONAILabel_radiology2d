@@ -1,5 +1,5 @@
 # Specify patient data dir
-study_dir='/workspace/images/V002/'
+study_dir='/workspace/images/preprocessed/V002/'
 
 # Get the name of the patient subdir
 pat_dir="$(basename "$study_dir")"
