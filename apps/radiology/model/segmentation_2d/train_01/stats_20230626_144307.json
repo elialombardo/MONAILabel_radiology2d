@@ -1,0 +1,20 @@
+{
+  "rank": 0,
+  "current_epoch": 22,
+  "current_iteration": 44,
+  "total_epochs": 50,
+  "total_iterations": 2,
+  "epoch": 22,
+  "start_ts": 1687790587,
+  "current_time": "0:01:01",
+  "best_metric": 0.8330410718917847,
+  "train": {
+    "metrics": {
+      "train_mean_dice": 0.8190737962722778,
+      "train_GTV_mean_dice": 0.8190737962722778
+    },
+    "key_metric_name": "train_mean_dice",
+    "best_metric": 0.8330410718917847,
+    "best_metric_epoch": 21
+  }
+}

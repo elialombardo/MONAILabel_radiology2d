@@ -1,0 +1,15 @@
+artifact_uri: file:///workspace/apps/radiology/model/segmentation_2d/train_01/mlruns/963184449332210264/cc212a9c87bf4c76bafc828f80b45795/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '963184449332210264'
+lifecycle_stage: active
+run_id: cc212a9c87bf4c76bafc828f80b45795
+run_name: run_20230626_144307
+run_uuid: cc212a9c87bf4c76bafc828f80b45795
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1687790588856
+status: 1
+tags: []
+user_id: unknown

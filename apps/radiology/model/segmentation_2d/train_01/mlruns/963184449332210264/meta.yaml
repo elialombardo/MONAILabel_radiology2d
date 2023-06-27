@@ -1,0 +1,6 @@
+artifact_location: file:///workspace/apps/radiology/model/segmentation_2d/train_01/mlruns/963184449332210264
+creation_time: 1687790588739
+experiment_id: '963184449332210264'
+last_update_time: 1687790588739
+lifecycle_stage: active
+name: segmentation_2d
