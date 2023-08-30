@@ -8,8 +8,10 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
-          "name": "file_eight.nii.gz"
+          "ts": 1692366225,
+          "name": "file_eight.nii.gz",
+          "epistemic_entropy": 0.0004051516007166356,
+          "epistemic_ts": 1687868323
         }
       },
       "labels": {}
@@ -18,8 +20,10 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
-          "name": "file_five.nii.gz"
+          "ts": 1692366225,
+          "name": "file_five.nii.gz",
+          "epistemic_entropy": 0.008689364418387413,
+          "epistemic_ts": 1687868323
         }
       },
       "labels": {}
@@ -28,8 +32,10 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
-          "name": "file_four.nii.gz"
+          "ts": 1692366225,
+          "name": "file_four.nii.gz",
+          "epistemic_entropy": 0.0004107966087758541,
+          "epistemic_ts": 1687868323
         }
       },
       "labels": {}
@@ -38,7 +44,7 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
+          "ts": 1692366225,
           "name": "file_nine.nii.gz"
         }
       },
@@ -46,7 +52,7 @@
         "final": {
           "ext": ".nii.gz",
           "info": {
-            "ts": 1687790486,
+            "ts": 1692366225,
             "name": "file_nine.nii.gz"
           }
         }
@@ -56,14 +62,10 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
+          "ts": 1692366225,
           "name": "file_one.nii.gz",
-          "strategy": {
-            "random": {
-              "ts": 1687792973,
-              "client_id": "user-xyz"
-            }
-          }
+          "epistemic_entropy": 0.00041510461596772075,
+          "epistemic_ts": 1687868323
         }
       },
       "labels": {}
@@ -72,14 +74,10 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
+          "ts": 1692366225,
           "name": "file_seven.nii.gz",
-          "strategy": {
-            "random": {
-              "ts": 1687790669,
-              "client_id": "user-xyz"
-            }
-          }
+          "epistemic_entropy": 0.00040559729677625,
+          "epistemic_ts": 1687868323
         }
       },
       "labels": {}
@@ -88,7 +86,7 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
+          "ts": 1692366225,
           "name": "file_six.nii.gz"
         }
       },
@@ -96,7 +94,7 @@
         "final": {
           "ext": ".nii.gz",
           "info": {
-            "ts": 1687790486,
+            "ts": 1692366225,
             "name": "file_six.nii.gz"
           }
         }
@@ -106,8 +104,10 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
-          "name": "file_ten.nii.gz"
+          "ts": 1692366225,
+          "name": "file_ten.nii.gz",
+          "epistemic_entropy": 0.00041035094182007015,
+          "epistemic_ts": 1687868323
         }
       },
       "labels": {}
@@ -116,8 +116,10 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
-          "name": "file_three.nii.gz"
+          "ts": 1692366225,
+          "name": "file_three.nii.gz",
+          "epistemic_entropy": 0.0004113413451705128,
+          "epistemic_ts": 1687868323
         }
       },
       "labels": {}
@@ -126,8 +128,10 @@
       "image": {
         "ext": ".nii.gz",
         "info": {
-          "ts": 1687790486,
-          "name": "file_two.nii.gz"
+          "ts": 1692366225,
+          "name": "file_two.nii.gz",
+          "epistemic_entropy": 0.0004105490224901587,
+          "epistemic_ts": 1687868323
         }
       },
       "labels": {}

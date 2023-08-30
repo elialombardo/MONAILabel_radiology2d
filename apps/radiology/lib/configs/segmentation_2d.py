@@ -19,9 +19,17 @@ from monai.networks.nets import SegResNet
 from monai.utils import optional_import
 
 from monailabel.interfaces.config import TaskConfig
-from monailabel.interfaces.tasks.infer_v2 import InferTask
+from monailabel.interfaces.tasks.infer_v2 import InferTask, InferType
 from monailabel.interfaces.tasks.train import TrainTask
 from monailabel.utils.others.generic import download_file, strtobool
+
+from monailabel.interfaces.tasks.strategy import Strategy
+from monailabel.interfaces.tasks.scoring import ScoringMethod
+from monailabel.tasks.activelearning.epistemic import Epistemic
+from monailabel.tasks.scoring.dice import Dice
+from monailabel.tasks.scoring.sum import Sum
+# from monailabel.tasks.scoring.epistemic import EpistemicScoring
+from monailabel.tasks.scoring.epistemic_v2 import EpistemicScoring
 
 _, has_cp = optional_import("cupy")
 _, has_cucim = optional_import("cucim")
@@ -32,6 +40,9 @@ logger = logging.getLogger(__name__)
 class Segmentation2D(TaskConfig):
     def init(self, name: str, model_dir: str, conf: Dict[str, str], planner: Any, **kwargs):
         super().init(name, model_dir, conf, planner, **kwargs)
+        
+        self.epistemic_enabled = None
+        self.epistemic_samples = None
 
         # Labels
         self.labels = {
@@ -62,8 +73,23 @@ class Segmentation2D(TaskConfig):
             init_filters=32,
             blocks_down=(1, 2, 2, 4),
             blocks_up=(1, 1, 1),
-            dropout_prob=0.1,
+            dropout_prob=0.0,
         )
+        
+        self.network_with_dropout = SegResNet(
+            spatial_dims=2,
+            in_channels=1,
+            out_channels=len(self.labels) + 1,  # labels plus background,
+            init_filters=32,
+            blocks_down=(1, 2, 2, 4),
+            blocks_up=(1, 1, 1),
+            dropout_prob=0.25,
+        )
+        
+        # Others
+        self.epistemic_enabled = strtobool(conf.get("epistemic_enabled", "false"))
+        self.epistemic_samples = int(conf.get("epistemic_samples", "5"))
+        logger.info(f"EPISTEMIC Enabled: {self.epistemic_enabled}; Samples: {self.epistemic_samples}")
 
     def infer(self) -> Union[InferTask, Dict[str, InferTask]]:
         task: InferTask = lib.infers.Segmentation(
@@ -94,3 +120,49 @@ class Segmentation2D(TaskConfig):
             labels=self.labels,
         )
         return task
+
+    def strategy(self) -> Union[None, Strategy, Dict[str, Strategy]]:
+        strategies: Dict[str, Strategy] = {}
+        if self.epistemic_enabled:
+            strategies[f"{self.name}_epistemic"] = Epistemic()
+        return strategies
+
+    def scoring_method(self) -> Union[None, ScoringMethod, Dict[str, ScoringMethod]]:
+        methods: Dict[str, ScoringMethod] = {
+            # "dice": Dice(),
+            # "sum": Sum(),
+        }          
+        
+        if self.epistemic_enabled:
+            
+        # deprecated                             
+        #     methods[f"{self.name}_epistemic"] = EpistemicScoring(
+        #         model=self.path,
+        #         network=self.network_with_dropout,
+        #         transforms=lib.infers.Segmentation(
+        #             dimension=2,
+        #             type=InferType.DEEPEDIT,
+        #             path=self.path,
+        #             network=self.network,
+        #             roi_size=self.roi_size,
+        #             target_spacing=self.target_spacing,
+        #             labels=self.labels,
+        #             preload=strtobool(self.conf.get("preload", "false")),
+        #             config={"largest_cc": True if has_cp and has_cucim else False},
+        #         ).pre_transforms(),
+        #         num_samples=self.epistemic_samples,
+        #     )
+        
+            methods[f"{self.name}_epistemic"] = EpistemicScoring(
+                                        infer_task=lib.infers.Segmentation(
+                                                        dimension=2,
+                                                        path=self.path,
+                                                        network=self.network,
+                                                        roi_size=self.roi_size,
+                                                        target_spacing=self.target_spacing,
+                                                        labels=self.labels,
+                                                        preload=strtobool(self.conf.get("preload", "false")),
+                                                        config={"largest_cc": True if has_cp and has_cucim else False},
+                                                    )
+                                                )
+        return methods

@@ -1,1 +1,3 @@
 /workspace/.hypothesis/
+*.pyc
+*.log

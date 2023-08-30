@@ -29,8 +29,6 @@ from monai.transforms import (
     AsChannelLastd,
 )
 
-from lib.transforms.transforms import RestoreLabelDimd
-
 from monailabel.interfaces.tasks.infer_v2 import InferType
 from monailabel.tasks.infer.basic_infer import BasicInferTask
 from monailabel.transform.post import Restored

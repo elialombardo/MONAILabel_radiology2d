@@ -12,3 +12,4 @@ This app includes a segmentation_2d model to do interactive auto-segmentation ov
 * The 2D images must be named with letters only (frame_eight, not frame_008), otherwise [3D Slicer will interpret them as slices of a single 3D volume](https://github.com/Project-MONAI/MONAILabel/discussions/1243)
 * You can change the model architecture, roi input size, target labels, etc. under /apps/radiology/lib/configs/segmentation_2d.py
 * You can change the data augmentations under /apps/radiology/lib/trainers/segmentation.py
+* If you want to use epistemic uncertainty, inside your docker, you need to change some code in  `mv /usr/local//lib/python3.8/dist-packages/monailabel/tests/scpring/epistemic_v2.py` and in `./apps/radiology/configs/segmentation_2d.py`

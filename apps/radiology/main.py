@@ -426,6 +426,7 @@ if __name__ == "__main__":
     # Execute main
     # export PYTHONPATH=~/Projects/MONAILabel:`pwd`
     # python main.py
+    print('Helloooooooooooooooooooooooooooooooooo')
     main()
 
 #%%
